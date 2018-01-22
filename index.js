@@ -54,7 +54,6 @@ module.exports = {
           // Create content section
           const content = element('section', {}, container)
           element('div', { classes: ['api-description'], html: body }, content)
-          console.log(container.outerHTML)
           return container.outerHTML
         })
       }
