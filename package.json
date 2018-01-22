@@ -1,6 +1,6 @@
 {
   "name": "gitbook-plugin-api",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "API Documentation plugin for GitBook",
   "main": "index.js",
   "scripts": {
@@ -35,7 +35,6 @@
     "eslint-plugin-standard": "^3.0.1"
   },
   "dependencies": {
-    "html-element": "^2.2.0",
-    "q": "^1.5.1"
+    "html-element": "^2.2.0"
   }
 }

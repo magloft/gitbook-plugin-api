@@ -1,9 +1,13 @@
 'use strict'
 
-const Q = require('q')
 const document = require('html-element').document
 
-function element (tag, { classes = [], attributes = {}, text = null, html = null } = {}, container = null) {
+function element (tag, options = {}, container = null) {
+  const classes = options.classes || {}
+  const attributes = options.attributes || {}
+  const text = options.text
+  const html = options.html
+
   const el = document.createElement(tag)
   for (let cls of classes) {
     el.classList.add(cls)
@@ -23,14 +27,6 @@ function element (tag, { classes = [], attributes = {}, text = null, html = null
   return el
 }
 
-function render (context, blocks) {
-  let promises = []
-  blocks.forEach((block, index) => {
-    promises.push(context.book.renderBlock('markdown', block))
-  })
-  return Q.all(promises)
-}
-
 module.exports = {
   book: {
     assets: './assets',
@@ -41,7 +37,7 @@ module.exports = {
   blocks: {
     api: {
       process (block) {
-        return render(this, [block.body]).then(([body, parameters, response]) => {
+        return this.book.renderBlock('markdown', block.body).then(body => {
           // Create container
           const container = element('article', { classes: ['api-container'] })
 
