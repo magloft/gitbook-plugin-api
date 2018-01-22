@@ -1,0 +1,40 @@
+{
+  "name": "gitbook-plugin-api",
+  "version": "1.0.0",
+  "description": "API Documentation plugin for GitBook",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MagLoft/gitbook-plugin-api.git"
+  },
+  "keywords": [
+    "gitbook",
+    "plugin",
+    "api",
+    "documentation"
+  ],
+  "engines": {
+    "gitbook": ">2.0.0"
+  },
+  "author": "Tobias Strebitzer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MagLoft/gitbook-plugin-api/issues"
+  },
+  "homepage": "https://github.com/MagLoft/gitbook-plugin-api#readme",
+  "devDependencies": {
+    "eslint": "^4.15.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1"
+  },
+  "dependencies": {
+    "html-element": "^2.2.0"
+  }
+}
