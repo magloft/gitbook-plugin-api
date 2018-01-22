@@ -2,7 +2,8 @@
 
 const document = require('html-element').document
 
-function element (tag, options = {}, container = null) {
+function element (tag, options, container) {
+  options = options || {}
   const classes = options.classes || {}
   const attributes = options.attributes || {}
   const text = options.text
@@ -37,7 +38,7 @@ module.exports = {
   blocks: {
     api: {
       process (block) {
-        return this.book.renderBlock('markdown', block.body).then(body => {
+        return this.book.renderBlock('markdown', block.body).then(function (body) {
           // Create container
           const container = element('article', { classes: ['api-container'] })
 

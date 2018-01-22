@@ -1,6 +1,6 @@
 {
   "name": "gitbook-plugin-api",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "API Documentation plugin for GitBook",
   "main": "index.js",
   "scripts": {
