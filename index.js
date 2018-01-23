@@ -4,18 +4,12 @@ const document = require('html-element').document
 
 function element (tag, options, container) {
   options = options || {}
-  const classes = options.classes || {}
-  const attributes = options.attributes || {}
+  const cls = options.class
   const text = options.text
   const html = options.html
 
   const el = document.createElement(tag)
-  for (let cls of classes) {
-    el.classList.add(cls)
-  }
-  for (let [name, value] of Object.entries(attributes)) {
-    el.setAttribute(name, value)
-  }
+  el.classList.add(cls)
   if (container != null) {
     container.appendChild(el)
   }
@@ -40,17 +34,17 @@ module.exports = {
       process (block) {
         return this.book.renderBlock('markdown', block.body).then(function (body) {
           // Create container
-          const container = element('article', { classes: ['api-container'] })
+          const container = element('div', { class: 'api-container' })
 
           // Create header
-          const header = element('header', {}, container)
-          if (block.kwargs.method) { element('small', { text: block.kwargs.method, classes: [block.kwargs.method.toLowerCase()] }, header) }
+          const header = element('div', { class: 'api-header' }, container)
+          if (block.kwargs.method) { element('small', { text: block.kwargs.method, class: block.kwargs.method.toLowerCase() }, header) }
           element('h2', { text: block.args[0] }, header)
           if (block.kwargs.url) { element('span', { text: block.kwargs.url }, header) }
 
           // Create content section
-          const content = element('section', {}, container)
-          element('div', { classes: ['api-description'], html: body }, content)
+          const content = element('div', { class: 'api-content' }, container)
+          element('div', { class: 'api-description', html: body }, content)
           return container.outerHTML
         })
       }

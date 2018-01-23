@@ -13,7 +13,7 @@
   box-shadow: 0px 6px 16px rgba(0,0,0,0.25);
 }
 
-.api-container > header {
+.api-container .api-header {
   line-height: 26px;
   padding: 10px;
   border-bottom: 1px solid #EEEEEE;
@@ -22,7 +22,7 @@
   flex-direction: row;
 }
 
-.api-container > header > small {
+.api-container .api-header small {
   background-color: #444444;
   background-image: linear-gradient(45deg, rgba(0,0,0,0) 50%, rgba(0, 0, 0, 0.1) 50%);
   color: #FFFFFF;
@@ -37,23 +37,23 @@
   text-align: center;
 }
 
-.api-container > header > small.get {
+.api-container .api-header small.get {
   background-color: #226ca0;
 }
 
-.api-container > header > small.put {
+.api-container .api-header small.put {
   background-color: #a08022;
 }
 
-.api-container > header > small.post {
+.api-container .api-header small.post {
   background-color: #46a022;
 }
 
-.api-container > header > small.delete {
+.api-container .api-header small.delete {
   background-color: #a02222;
 }
 
-.api-container > header > h2 {
+.api-container .api-header h2 {
   display: block;
   flex: 1;
   margin: 0;
@@ -65,7 +65,7 @@
   height: 26px;
 }
 
-.api-container > header > span {
+.api-container .api-header span {
   display: block;
   color: #266D9E;
   font-size: 11px;
@@ -77,16 +77,16 @@
   margin-left: 10px;
 }
 
-.api-container > section {
+.api-container .api-content {
   height: 0px;
   overflow: hidden;  
 }
 
-.api-container > section > div {
+.api-container .api-content div {
   padding: 20px 20px 10px 20px;
 }
 
-.api-container > section > div > h3 {
+.api-container .api-content div h3 {
   padding: 14px 0px;
   margin: 0px;
   border-top: 1px solid #EEE;
@@ -96,11 +96,11 @@
   letter-spacing: 1px;
 }
 
-.api-container > section > div > pre {
+.api-container .api-content div pre {
   line-height: 18px;
   font-size: 15px;
 }
 
-.api-container.expanded > section {
+.api-container.expanded .api-content {
   height: auto;
 }

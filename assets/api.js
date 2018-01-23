@@ -1,5 +1,7 @@
-document.body.querySelectorAll("article.api-container").forEach(function(container) {
-  container.querySelector("header").addEventListener('click', function() {
-    container.classList.toggle('expanded')
-  })
-})
+require(["gitbook"], function(gitbook) {
+  gitbook.events.bind("page.change", function() {
+    $(".api-header").click(function(event) {
+      $(event.currentTarget).parent().toggleClass('expanded');
+    });
+  });
+});
