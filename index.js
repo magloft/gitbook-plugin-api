@@ -7,6 +7,7 @@ function element (tag, options, container) {
   const cls = options.class
   const text = options.text
   const html = options.html
+  const title = options.title
 
   const el = document.createElement(tag)
   el.classList.add(cls)
@@ -18,6 +19,9 @@ function element (tag, options, container) {
   }
   if (html != null) {
     el.innerHTML = html
+  }
+  if (title != null) {
+    el.title = title
   }
   return el
 }
@@ -40,7 +44,7 @@ module.exports = {
           const header = element('div', { class: 'api-header' }, container)
           if (block.kwargs.method) { element('small', { text: block.kwargs.method, class: block.kwargs.method.toLowerCase() }, header) }
           element('h2', { text: block.args[0] }, header)
-          if (block.kwargs.url) { element('span', { text: block.kwargs.url }, header) }
+          if (block.kwargs.url) { element('span', { text: block.kwargs.url, title: block.kwargs.url }, header) }
 
           // Create content section
           const content = element('div', { class: 'api-content' }, container)
