@@ -1,6 +1,6 @@
 {
-  "name": "gitbook-plugin-api",
-  "version": "1.1.0",
+  "name": "gitbook-plugin-api-test",
+  "version": "1.0.0-t06251707",
   "description": "API Documentation plugin for GitBook",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MagLoft/gitbook-plugin-api.git"
+    "url": "git+https://github.com/xzh97/gitbook-plugin-api.git"
   },
   "keywords": [
     "gitbook",
@@ -19,12 +19,12 @@
   "engines": {
     "gitbook": ">2.0.0"
   },
-  "author": "Tobias Strebitzer",
+  "author": "xizh",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/MagLoft/gitbook-plugin-api/issues"
+    "url": "https://github.com/xzh97/gitbook-plugin-api/issues"
   },
-  "homepage": "https://github.com/MagLoft/gitbook-plugin-api#readme",
+  "homepage": "https://github.com/xzh97/gitbook-plugin-api#readme",
   "devDependencies": {
     "eslint": "^4.15.0",
     "eslint-config-airbnb-base": "^12.1.0",
