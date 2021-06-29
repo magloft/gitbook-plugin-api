@@ -42,80 +42,37 @@ module.exports = {
 
           // Create header
           const header = element('div', { class: 'api-header' }, container)
-          if (block.kwargs.method) { element('small', { text: block.kwargs.method, class: block.kwargs.method.toLowerCase() }, header) }
+          if (block.kwargs.method) { element('small', { text: block.kwargs.method, class: block.kwargs.method.toLowerCase(), id: 'method' }, header) }
           element('h2', { text: block.args[0] }, header)
-          if (block.kwargs.url) { element('span', { text: block.kwargs.url }, header) }
+          if (block.kwargs.url) { element('span', { text: block.kwargs.url, id: 'apiUrl' }, header) }
 
-
-          // Create content section
+          // Create content wrapper
           const content = element('div', { class: 'api-content' }, container)
-          element('div', { class: 'api-description', html: body }, content)
-          return container.outerHTML
-        })
-      },
-      blocks:[
-        {
-          parameters: {
-            process (block) {
-              console.log('parameters block',block);
-              return this.book.renderBlock('markdown', block.body).then(function (body) {
-                console.log('parameters block body',body);
-                // Create container
-                const container = element('div', { class: 'params-container' })
-      
-                if(block.kwargs.params)  element('textarea',{id: 'urlParams', value: JSON.stringify(block.kwargs.params || {})}, container)
-                if(block.kwargs.data) element('textarea',{id: 'bodyParams', value: JSON.stringify(block.kwargs.data || {})}, container)
-      
-                console.log(container.outerHTML);
-                return container.outerHTML
-              })
-            }
-          },
-        },
-        {
-          response: {
-            process (block) {
-              console.log('response block',block);
-              return this.book.renderBlock('markdown', block.body).then(function (body) {
-                console.log('response block body',body);
-                // Create container
-                const container = element('div', { class: 'response-container' })
-      
-                // Create inner section
-                element('div', { class: 'response-inner' }, container)
-                return container.outerHTML
-              })
-            }
-          },
-        }
-      ]
-    },
-    parameters: {
-      process (block) {
-        console.log('parameters block',block);
-        return this.book.renderBlock('markdown', block.body).then(function (body) {
-          console.log('parameters block body',body);
-          // Create container
-          const container = element('div', { class: 'params-container' })
+          element('div', {class: 'api-description', html: body}, content)
 
-          if(block.kwargs.params)  element('textarea',{id: 'urlParams', value: JSON.stringify(block.kwargs.params || {})}, container)
-          if(block.kwargs.data) element('textarea',{id: 'bodyParams', value: JSON.stringify(block.kwargs.data || {})}, container)
+          // create parameters container
+          const contentWrapper = element('div', { class: 'params-container'}, content)
+          if(block.kwargs.params) {
+            const urlParamsContainer = element('div', {class: 'params-wrapper'}, contentWrapper);
+            element('h4', { class: 'params-title',text: 'url参数：'}, urlParamsContainer);
+            const textarea = element('textarea',{id: 'urlParams', class: 'params-content', html: JSON.stringify(block.kwargs.params || {}, undefined, 4)}, urlParamsContainer)
+            textarea.rows = 5;
+          }
+          if(block.kwargs.data) {
+            const urlDataContainer = element('div', {class: 'params-wrapper'}, contentWrapper);
+            element('h4', { class: 'params-title',text: '请求体参数：'}, urlDataContainer);
+            const textarea = element('textarea',{id: 'data', class: 'params-content', html: JSON.stringify(block.kwargs.data || {}, undefined, 4)}, urlDataContainer)
+            textarea.rows = 5;
+          }
 
-          console.log(container.outerHTML);
-          return container.outerHTML
-        })
-      }
-    },
-    response: {
-      process (block) {
-        console.log('response block',block);
-        return this.book.renderBlock('markdown', block.body).then(function (body) {
-          console.log('response block body',body);
-          // Create container
-          const container = element('div', { class: 'response-container' })
+          // Create response container
+          const resContainer = element('div', { class: 'response-container' }, content)
+          element('button',{class: 'btn request-btn', html: '模拟请求'}, resContainer)
+          element('h4', { class: 'params-title',text: '请求结果：'}, resContainer);
+          const inner = element('div', { class: 'response-inner' }, resContainer)
+          const resResult = element('textarea',{id: 'result', class: 'response-content'}, inner)
+          resResult.readOnly = true;
 
-          // Create inner section
-          element('div', { class: 'response-inner' }, container)
           return container.outerHTML
         })
       }

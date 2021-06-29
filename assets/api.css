@@ -1,3 +1,6 @@
+textarea{
+  text-size-adjust: none;
+}
 .markdown-section {
   overflow: visible !important;
 }
@@ -78,15 +81,15 @@
 }
 
 .api-container .api-content {
-  height: 0px;
+  height: auto;
   overflow: hidden;  
 }
 
-.api-container .api-content div {
+.api-container .api-content .api-description {
   padding: 20px 20px 10px 20px;
 }
 
-.api-container .api-content div h3 {
+.api-container .api-content .api-description h3 {
   padding: 14px 0px;
   margin: 0px;
   border-top: 1px solid #EEE;
@@ -96,11 +99,53 @@
   letter-spacing: 1px;
 }
 
-.api-container .api-content div pre {
+.api-container .api-content .api-description pre {
   line-height: 18px;
   font-size: 15px;
 }
 
-.api-container.expanded .api-content {
-  height: auto;
+.params-container{
+  width: 100%;
+  margin-top: 20px;
+}
+
+.params-wrapper{
+  margin-top: 10px;
+}
+
+.params-title{
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.params-content{
+  width: 100%;
+  resize: none;
+  outline: none;
+}
+
+.response-container{
+  margin-top: 20px;
+}
+.response-inner{
+  margin-top: 10px;
+}
+.request-btn{
+  color: #fff;
+  background-color: #3280fc;
+  text-align: center;
+  padding: 8px;
+  border: none;
+  font-size: 14px;
+  border-radius: 4px;
+  outline: none;
+}
+.request-btn:hover{
+  opacity: .8;
+}
+.response-content{
+  outline: none;
+  resize: none;
+  width: 100%;
+  min-height: 300px;
 }
