@@ -36,44 +36,53 @@ const isJSONStr = str => {
 require(["gitbook"], function(gitbook) {
   gitbook.events.bind("page.change", function() {
     $(".api-header").click(function(event) {
-      // $(event.currentTarget).parent().toggleClass('expanded');
+      $('.api-content').slideToggle('normal')
+      $('.icon-btn-right').toggleClass('arrow-down')
     });
 
-    $('#urlParams').blur(function(){
-      let val = $(this).val();
-      if(!isJSONStr(val)){
-        window.alert('invalid json str, please input correct json str');
-      }
+    $(".reset-btn").click(function(ev){
+      let initialValue = $('#initialValue').val();
+      $('#data').val(initialValue)
     })
 
-    $('#data').blur(function(){
-      let val = $(this).val();
-      if(!isJSONStr(val)){
-        window.alert('invalid json str, please input correct json str');
-      }
-    })
+    // $('#urlParams').blur(function(){
+    //   let val = $(this).val();
+    //   if(!isJSONStr(val)){
+    //     window.alert('invalid json str, please input correct json str');
+    //   }
+    // })
+
+    // $('#data').blur(function(){
+    //   let val = $(this).val();
+    //   if(!isJSONStr(val)){
+    //     window.alert('invalid json str, please input correct json str');
+    //   }
+    // })
 
     $(".request-btn").click(function(ev){
-      let url = $('#apiUrl').html();
-      let method = $('#method').html();
+      let url = $('#apiUrl').val();
+      let method = $('#method').val();
       let urlParams = JSON.parse($('#urlParams').val() || '{}');
       let data = JSON.parse($('#data').val() || '{}');
       let result = $('#result');
 
       let finalUrl = getReqUrl(url, urlParams)
+      $(".request-btn").toggleClass('disabled-btn').attr({disabled: true}).html('请求中')
       $.ajax({
-        url: finalUrl,
+        url: url,
         type: method.toUpperCase(),
         data,
         success:function (data){
           console.log(data);
           result.val(JSON.stringify(data, undefined, 4))
+          $(".request-btn").toggleClass('disabled-btn').attr({disabled: false}).html('提交请求')
         },
         error: function(xhr, textStatus, errorThrown){
           console.error(xhr);
           console.error(textStatus);
           console.error(errorThrown);
           result.val(JSON.stringify(textStatus || errorThrown, undefined, 4))
+          $(".request-btn").toggleClass('disabled-btn').attr({disabled: false}).html('提交请求')
         }
       })
     })

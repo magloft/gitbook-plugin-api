@@ -1,6 +1,6 @@
 {
-  "name": "gitbook-plugin-api-test",
-  "version": "1.0.0-t06282039",
+  "name": "gitbook-plugin-xiaoe-api",
+  "version": "1.0.1",
   "description": "API Documentation plugin for GitBook",
   "main": "index.js",
   "scripts": {
